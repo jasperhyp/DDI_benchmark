@@ -1,0 +1,69 @@
+name: deepDDI-sweep1 
+project: DeepDDI-baseline
+entity: noveldrugdrug
+program: /home/nih492/deepDDI/train.py
+command:
+- ${env}
+- ${interpreter}
+- ${program}
+- ${args_no_boolean_flags}
+method: random
+metric:
+  goal: maximize
+  name: best_val_auroc
+parameters:
+  lr:
+    values: [1e-6, 1e-5, 1e-4, 1e-3]
+    
+  batch_size:
+    values: [128, 256, 512, 1028]
+    
+  # dropout:
+  #   values: [0.5, 0.4, 0.3, 0.2, 0.1, 0]
+    
+
+  feature_dim:
+    values: [256, 128, 64, 32]
+    
+  num_layers:
+    values: [1, 2, 4, 6]
+
+    
+    
+    
+  # wd:
+  #   values: [1e-7, 1e-6, 1e-5, 1e-4]
+  # readout: 
+  #   values: [max, mean, sum]
+  # han_att_heads:
+  #   values: [16, 8, 4]
+  # han_hidden_dim:
+  #   values: [128, 64, 32]
+  # han_negative_slope:
+  #   values: [0.4, 0.3, 0.2, 0.1]
+  # han_dropout:
+  #   values: [0.5, 0.4, 0.3, 0.2, 0.1, 0]
+  # neuralfp_hidden_dim1:
+  #   values: [128, 64, 32]
+  # neuralfp_hidden_dim2:
+  #   values: [64, 32, 0]
+  # neuralfp_batch_norm:
+  #   values: [True, False]
+  # neuralfp_concat_hidden:
+  #   values: [True, False]
+       
+        
+#   transformer_att_heads:
+#     values: [16, 8, 4]
+#   transformer_num_layers:
+#     values: [12, 9, 6, 3]
+#   transformer_ffn_dim:
+#     values: [2048, 1024, 512, 256, 128, 64, 32]
+#   transformer_dropout:
+#     values: [0.5, 0.4, 0.3, 0.2, 0.1]
+#   transformer_act:
+#     values: ['relu', 'gelu']
+#   transformer_batch_first:
+#     values: [True, False]
+#   transformer_norm_first:
+#     values: [True, False]
